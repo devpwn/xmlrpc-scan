@@ -16,23 +16,24 @@ func main() {
 	server := flag.String("server", "", "[-] (e.g: http://159.89.121.20 or http://mydomain.com")
 	flag.Parse()
 
-	if *target == "" || *server == "" {
-		fmt.Println("[-] Required a target.. and target server.. ")
-		fmt.Printf("(e.g main.go -target https://www.target.com -server http://burpcollborator.net)\n")
+	serverUser := *server
+	targetUser := *target
+
+	if serverUser == "" {
+		fmt.Println("[+] Server is required to test ssrf..")
+		fmt.Println("./main.go -server http://burpcollaborator.net")
 		os.Exit(1)
 	}
 
-	serverUser := *server
-	targetUser := *target
+	targetStruct := core.New(targetUser, serverUser)
 
 	//verify if data is from stdin
 	file, _ := os.Stdin.Stat()
 	if (file.Mode() & os.ModeCharDevice) == 0 {
-		core.FromStdin()
+		targetStruct.FromStdin()
 	} else {
-		if core.IsAlive(targetUser) {
-			core.VerifyMethods(targetUser)
-			fmt.Println(serverUser)
+		if targetStruct.IsAlive(targetUser) {
+			targetStruct.VerifyMethods(targetUser)
 		}
 	}
 
