@@ -11,7 +11,7 @@ usage:
 - Or download from source
 
 ```bash
-go get -u https://github.com/nullfil3/xmlrpc-scan.git
+go get -u https://github.com/nullfil3/xmlrpc-scan
 ```
 
 ##### Usage
