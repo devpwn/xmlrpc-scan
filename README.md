@@ -6,7 +6,7 @@ usage:
 
 ##### Install
 
-- Download from releases: https://github.com/nullfil3/xmlrpc-scan/releases/tag/v1
+- Download from releases: https://github.com/nullfil3/xmlrpc-scan/releases
 
 - Or Compiling by yourself
 
