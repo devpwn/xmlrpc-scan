@@ -11,7 +11,7 @@ usage:
 - Or Compiling by yourself
 
 ```bash
-git clone 
+git clone https://github.com/nullfil3/xmlrpc-scan.git
 cd xmlrpc-scan
 go build -o xmlrpcscan
 ./xmlrpcscan
