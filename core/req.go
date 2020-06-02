@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"../utils"
+	"github.com/fatih/color"
 )
 
 const ua = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:74.0) Gecko/20100101 Firefox/74.0 - github.com/nullfil3/xmlrpcscan)"
@@ -144,7 +145,8 @@ func (s *Scan) VerifyMethods(url string) {
 	}
 
 	if matchedStringPing {
-		fmt.Printf("[+] Pingback open at [%s]\n", url)
+		color.Magenta("[+] Pingback open at [%s]\n", url)
+
 	}
 
 	s.Ssrf(url)
@@ -156,7 +158,7 @@ func (s *Scan) VerifyMethods(url string) {
 	}
 
 	if matchedStringBrute {
-		fmt.Printf("[+] blogger.getUsersBlogs open at [%s]\n", url)
+		color.Magenta("[+] blogger.getUsersBlogs open at [%s]\n", url)
 	}
 
 }
@@ -188,9 +190,9 @@ func (s *Scan) Ssrf(target string) {
 	}
 
 	if resp.StatusCode == 200 {
-		fmt.Printf("[*] Eveything seems ok.. for SSRF testing..\n")
+		color.Yellow("[*] SSRF testing..\n")
 	}
-	fmt.Printf("[+] SSRF TEST DONE at [%s]: verify at [%s] if a HTTP connection was recevied", s.target, s.server)
+	color.Cyan("[+] SSRF TEST DONE at [%s]: verify at [%s] if a HTTP connection was recevied", s.target, s.server)
 
 }
 
@@ -212,7 +214,7 @@ func (s *Scan) ProxyTesting() {
 	}
 
 	if resp.StatusCode == 200 {
-		fmt.Println("[+] wp-json/oembed/1.0/proxy open, verify is a HTTP was recevied at your server..")
+		color.Cyan("[+] wp-json/oembed/1.0/proxy open, verify is a HTTP was recevied at your server..")
 	}
 
 }

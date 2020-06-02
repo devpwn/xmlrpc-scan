@@ -1,7 +1,7 @@
 package utils
 
-const author string = "[+]Author:nullfil3\n\n"
-const version string = "[+]Version: 1.0\n\n"
+const author string = "[+]Author:nullfil3\n"
+const version string = "[+]Version: 1.1\n\n"
 
 //UglyBanner banner
 func UglyBanner() string {
@@ -15,7 +15,6 @@ func UglyBanner() string {
  ██╔██╗ ██║╚██╔╝██║██║     ██╔══██╗██╔═══╝ ██║╚════╝╚════██║██║     ██╔══██║██║╚██╗██║
 ██╔╝ ██╗██║ ╚═╝ ██║███████╗██║  ██║██║     ╚██████╗ ███████║╚██████╗██║  ██║██║ ╚████║
 ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚═╝      ╚═════╝ ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝                                                                       	
-
 
 
 `
