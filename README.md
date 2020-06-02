@@ -8,10 +8,13 @@ usage:
 
 - Download from releases: https://github.com/nullfil3/xmlrpc-scan/releases/tag/v1
 
-- Or download from source
+- Or Compiling by yourself
 
 ```bash
-go get -u github.com/nullfil3/xmlrpc-scan
+git clone 
+cd xmlrpc-scan
+go build -o xmlrpcscan
+./xmlrpcscan
 ```
 
 ##### Usage
