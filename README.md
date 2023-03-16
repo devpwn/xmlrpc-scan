@@ -6,12 +6,12 @@ usage:
 
 ##### Install
 
-- Download from releases: https://github.com/nullfil3/xmlrpc-scan/releases
+- Download from releases: https://github.com/madrdf/xmlrpc-scan/releases
 
 - Or Compiling by yourself
 
 ```bash
-git clone https://github.com/nullfil3/xmlrpc-scan.git
+git clone https://github.com/madrdf/xmlrpc-scan.git
 cd xmlrpc-scan
 go build -o xmlrpcscan
 ./xmlrpcscan
