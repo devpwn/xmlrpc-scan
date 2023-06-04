@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"./core"
-	"./utils"
+	"github.com/nullfd/xmlrpc-scan/core"
+	"github.com/nullfd/xmlrpc-scan/utils"
 )
 
 func main() {
