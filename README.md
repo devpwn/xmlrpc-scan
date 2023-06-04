@@ -32,5 +32,3 @@ xmlrpcscan -target https://target.com -server http://burpcollaborator.net
 
 ![](tool.gif)
 
-#Todo
---> Tracking where ssrf request come from, when vulnerable.
