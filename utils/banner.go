@@ -1,9 +1,9 @@
 package utils
 
-const author string = "[+]Author:nullfil3\n"
-const version string = "[+]Version: 1.1\n\n"
+const author string = "[+]Author:nullfd\n"
+const version string = "[+]Version: 2.0\n\n"
 
-//UglyBanner banner
+// UglyBanner banner
 func UglyBanner() string {
 
 	var banner string = `
