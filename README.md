@@ -20,7 +20,7 @@ usage:
 
 ##### Usage
 
-* List of URLS
+* List of wordpress urls 
 ```bash
 cat urls.txt | xmlrpcscan -server http://burpcollaborator.net
 ```
