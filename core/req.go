@@ -15,19 +15,19 @@ import (
 	"sync"
 	"time"
 
-	"../utils"
 	"github.com/fatih/color"
+	"github.com/nullfd/xmlrpc-scan/utils"
 )
 
-const ua = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:74.0) Gecko/20100101 Firefox/74.0 - github.com/nullfil3/xmlrpcscan)"
+const ua = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:74.0) Gecko/20100101 Firefox/74.0)"
 
-//Scan struct
+// Scan struct
 type Scan struct {
 	target string
 	server string
 }
 
-//New Create constructor
+// New Create constructor
 func New(t string, s string) *Scan {
 	return &Scan{target: t, server: s}
 }
@@ -54,7 +54,7 @@ func newClient() *http.Client {
 	}
 }
 
-//FromStdin test results from stdin
+// FromStdin test results from stdin
 func (s *Scan) FromStdin() {
 	var wg sync.WaitGroup
 	sc := bufio.NewScanner(os.Stdin)
@@ -74,7 +74,7 @@ func (s *Scan) FromStdin() {
 	wg.Wait()
 }
 
-//IsAlive veirfy if xmlrpc is open
+// IsAlive veirfy if xmlrpc is open
 func (s *Scan) IsAlive(url string) bool {
 
 	cli := newClient()
@@ -111,7 +111,7 @@ func (s *Scan) IsAlive(url string) bool {
 	return false
 }
 
-//VerifyMethods verify methods xmlrpc
+// VerifyMethods verify methods xmlrpc
 func (s *Scan) VerifyMethods(url string) {
 
 	cli := newClient()
@@ -163,13 +163,21 @@ func (s *Scan) VerifyMethods(url string) {
 
 }
 
-//Ssrf testing ssrf if avaliable
+// generate a random number and return a string
+func randomString() string {
+	return fmt.Sprintf("%d", time.Now().UnixNano())
+}
+
+// Ssrf testing ssrf if avaliable
 func (s *Scan) Ssrf(target string) {
 	url := target + "/xmlrpc.php"
 
 	xml := utils.SSRF
 
-	replaceServer := strings.ReplaceAll(xml, "$SERVER$", s.server)
+	randomNumber := randomString()
+	oobServer := randomNumber + "." + s.server
+
+	replaceServer := strings.ReplaceAll(xml, "$SERVER$", oobServer)
 	replaceTarget := strings.ReplaceAll(replaceServer, "$TARGET$", target)
 
 	body := replaceTarget
@@ -192,15 +200,16 @@ func (s *Scan) Ssrf(target string) {
 	if resp.StatusCode == 200 {
 		color.Yellow("[*] SSRF testing..\n")
 	}
-	color.Cyan("[+] SSRF TEST DONE at [%s]: verify at [%s] if a HTTP connection was recevied", s.target, s.server)
+	color.Cyan("[+] SSRF TEST DONE at [%s]: verify at [%s] if a HTTP connection was recevied", s.target, oobServer)
 
 }
 
-//ProxyTesting testing oem proxyng server
+// ProxyTesting testing oem proxyng server
 func (s *Scan) ProxyTesting() {
 	client := newClient()
-
-	url := s.target + "/wp-json/oembed/1.0/proxy?url=" + s.server + "/nullfil3"
+	randomNumber := randomString()
+	oobServer := randomNumber + "." + s.server
+	url := s.target + "/wp-json/oembed/1.0/proxy?url=" + oobServer + "/nullfd"
 
 	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Set("User-Agent", ua)
