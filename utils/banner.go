@@ -1,6 +1,6 @@
 package utils
 
-const author string = "[+]Author:nullfd\n"
+const author string = "[+]Author:snifit\n"
 const version string = "[+]Version: 2.0\n\n"
 
 // UglyBanner banner
