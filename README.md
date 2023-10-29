@@ -6,7 +6,7 @@ usage:
 
 ##### Install
 
-- Download from releases: https://github.com/nullfd/xmlrpc-scan/releases
+- Download from releases: https://github.com/snifit/xmlrpc-scan/releases
 - Or Compiling by yourself
 
 
